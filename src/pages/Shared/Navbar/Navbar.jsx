@@ -57,8 +57,10 @@ const Navbar = () => {
           ) : (
             // Guest: Login + Register
             <>
-              <a href="/login" className="btn btn-ghost">Login</a>
+             <div className=''>
+                 <a href="/login" className="btn btn-ghost">Login</a>
               <a href="/register" className="btn btn-primary ml-2">Register</a>
+             </div>
             </>
           )}
 
