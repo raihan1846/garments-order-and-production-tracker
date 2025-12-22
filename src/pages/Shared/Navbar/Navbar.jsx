@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import logo from '/src/assets/protracker.webp';
+import { Link } from 'react-router';
 
 const Navbar = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
     return (
         <div className="navbar bg-base-100 shadow-md sticky top-0 z-50">
         {/* Logo - Start */}
@@ -14,7 +16,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           {isLoggedIn ? (
             <ul className="menu menu-horizontal px-1">
-              <li><a href="/">Home</a></li>
+              <li><Link  to="/home">Home</Link></li>
               <li><a href="/products">All Products</a></li>
               <li><a href="/dashboard" className="text-primary font-semibold">Dashboard</a></li>
             </ul>
