@@ -1,17 +1,15 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {getAuth} from 'firebase/auth'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDRTHPun3M_XrTzFWo-ULKyntA1E-rgdoM",
-  authDomain: "garments-order-tracker-94f90.firebaseapp.com",
-  projectId: "garments-order-tracker-94f90",
-  storageBucket: "garments-order-tracker-94f90.firebasestorage.app",
-  messagingSenderId: "745687832054",
-  appId: "1:745687832054:web:aa923fd0925cc35b7ee3d7"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+export const auth = getAuth(app);

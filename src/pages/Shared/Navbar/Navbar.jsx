@@ -58,8 +58,8 @@ const Navbar = () => {
             // Guest: Login + Register
             <>
              <div className=''>
-                 <a href="/login" className="btn btn-ghost">Login</a>
-              <a href="/register" className="btn btn-primary ml-2">Register</a>
+                 <Link to="/login" className="btn btn-ghost">Login</Link>
+              <Link to="/register" className="btn btn-primary ml-2">Register</Link>
              </div>
             </>
           )}
@@ -92,8 +92,8 @@ const Navbar = () => {
                 <>
                   <li><a href="/about">About Us</a></li>
                   <li><a href="/contact">Contact</a></li>
-                  <li><a href="/login">Login</a></li>
-                  <li><a href="/register">Register</a></li>
+                  <li><Link to="/login">Login</Link></li>
+                  <li><Link to="/register">Register</Link></li>
                 </>
               )}
             </ul>
