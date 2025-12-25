@@ -51,12 +51,12 @@ const Dashboard = () => {
                         <Link to="/dashboard/all-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
                             All Orders
                         </Link>
-                        <Link to="/dashboard/my-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
+                        {/* <Link to="/dashboard/my-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
                             My Orders
                         </Link>
                         <Link to="/dashboard/track-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Track Order
-                        </Link>
+                        </Link> */}
                         <Link to="/dashboard/pending-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Pending Orders
                         </Link>
@@ -74,12 +74,12 @@ const Dashboard = () => {
                         <Link to="/productLists" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Manage Products
                         </Link>
-                        <Link to="/dashboard/my-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
+                        {/* <Link to="/dashboard/my-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
                             My Orders
                         </Link>
                         <Link to="/dashboard/track-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Track Order
-                        </Link>
+                        </Link> */}
                         <Link to="/dashboard/pending-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Pending Orders
                         </Link>

@@ -120,7 +120,7 @@ const Register = () => {
           </div>
 
           {/* Password */}
-          <div>
+          {/* <div>
             <label className="block text-gray-700 font-medium mb-1">
               Password
             </label>
@@ -139,7 +139,57 @@ const Register = () => {
                 Password must be at least 6 characters
               </p>
             )}
-          </div>
+          </div> */}
+          {/* Password */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                  validate: {
+                    hasUpperCase: (value) =>
+                      /[A-Z]/.test(value) || "Must contain at least one uppercase letter",
+                    hasLowerCase: (value) =>
+                      /[a-z]/.test(value) || "Must contain at least one lowercase letter",
+                    hasNumber: (value) =>
+                      /[0-9]/.test(value) || "Must contain at least one number",
+                    hasSpecialChar: (value) =>
+                      /[!@#$%^&*]/.test(value) ||
+                      "Must contain at least one special character (!@#$%^&*)",
+                  },
+                })}
+                placeholder="Enter your password"
+                className={`w-full px-4 py-3 rounded-xl border ${
+                  errors.password ? "border-red-500" : "border-gray-300"
+                } text-gray-800 focus:ring-2 focus:ring-indigo-400 focus:outline-none`}
+              />
+
+              <p className="text-gray-400 text-sm mt-1">
+                Password must be at least 6 characters long and include:
+                <br />
+                • Uppercase letter (A-Z)
+                <br />
+                • Lowercase letter (a-z)
+                <br />
+                • Number (0-9)
+                <br />
+                • Special character (!@#$%^&*)
+              </p>
+
+              {/* সব এরর একসাথে দেখাবে (সবচেয়ে সুন্দর UX) */}
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-2">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
 
           {/* Submit Button */}
           <button
