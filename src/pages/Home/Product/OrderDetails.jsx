@@ -96,7 +96,7 @@ const OrderDetails = () => {
                 </span>
                 <p className="font-semibold">{track.status}</p>
                 <p className="text-sm text-gray-500">
-                  {track.location} • {new Date(track.date).toLocaleString()}
+                  {track.location} • {new Date(track.createdAt).toLocaleString()}
                 </p>
                 {track.note && (
                   <p className="text-sm mt-1">{track.note}</p>

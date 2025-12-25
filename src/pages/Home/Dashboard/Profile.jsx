@@ -18,7 +18,7 @@ const Profile = () => {
 
       try {
         const res = await axios.get(`http://localhost:3000/users?email=${currentUser.email}`);
-        const userData = res.data[0]; // ✅ Array থেকে first item
+        const userData = res.data[0]; 
 
         if (!userData) {
           navigate("/login");

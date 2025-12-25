@@ -7,7 +7,13 @@ const AllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState("all");
-
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [isTrackingModalOpen, setIsTrackingModalOpen] = useState(false);
+    const [trackingForm, setTrackingForm] = useState({
+    location: "",
+    note: "",
+    status: "Cutting Completed",
+    });
     // Fetch orders
     useEffect(() => {
         axios.get("http://localhost:3000/orders")
@@ -148,6 +154,16 @@ const handleDeleteOrder = async (orderId) => {
                                         >
                                             Delete
                                         </button>
+                                        <button
+  onClick={() => {
+    setSelectedOrder(order);
+    setIsTrackingModalOpen(true);
+  }}
+  className="btn btn-sm btn-info ml-2"
+>
+  Tracking
+</button>
+
                                 </td>
                             </tr>
                         ))}
@@ -161,6 +177,75 @@ const handleDeleteOrder = async (orderId) => {
                         )}
                     </tbody>
                 </table>
+                {isTrackingModalOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-6 w-full max-w-md">
+      <h3 className="text-lg font-bold mb-4">Add Tracking Info</h3>
+
+      <input
+        placeholder="Location"
+        className="input input-bordered w-full mb-2"
+        value={trackingForm.location}
+        onChange={(e) =>
+          setTrackingForm({ ...trackingForm, location: e.target.value })
+        }
+      />
+
+      <textarea
+        placeholder="Note"
+        className="textarea textarea-bordered w-full mb-2"
+        value={trackingForm.note}
+        onChange={(e) =>
+          setTrackingForm({ ...trackingForm, note: e.target.value })
+        }
+      />
+
+      <select
+        className="select select-bordered w-full mb-4"
+        value={trackingForm.status}
+        onChange={(e) =>
+          setTrackingForm({ ...trackingForm, status: e.target.value })
+        }
+      >
+        <option>Cutting Completed</option>
+        <option>Sewing Started</option>
+        <option>Finishing</option>
+        <option>QC Checked</option>
+        <option>Packed</option>
+        <option>Shipped</option>
+        <option>Out for Delivery</option>
+      </select>
+
+      <div className="flex justify-end gap-2">
+        <button
+          className="btn btn-outline"
+          onClick={() => setIsTrackingModalOpen(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={async () => {
+            try {
+              await axios.patch(
+                `http://localhost:3000/orders/${selectedOrder._id}/tracking`,
+                trackingForm
+              );
+              toast.success("Tracking updated");
+              setIsTrackingModalOpen(false);
+              setTrackingForm({ location: "", note: "", status: "Cutting Completed" });
+            } catch {
+              toast.error("Failed to add tracking");
+            }
+          }}
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
             </div>
         </div>
     );

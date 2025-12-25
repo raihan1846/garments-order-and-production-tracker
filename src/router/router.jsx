@@ -22,11 +22,15 @@ import AllOrders from "../pages/Home/Product/AllOrders";
 import OrderDetails from "../pages/Home/Product/OrderDetails";
 import MyOrders from "../pages/Home/Product/MyOrders";
 import TrackOrder from "../pages/Home/Product/TrackOrder";
+import PendingOrder from "../pages/Home/Product/PendingOrder";
+import ApprovedOrder from "../pages/Home/Product/ApprovedOrder";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -65,6 +69,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyOrders />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: '/dashboard/pending-order',
+        element: (
+          <PrivateRoute>
+            <PendingOrder />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: '/dashboard/approved-order',
+        element: (
+          <PrivateRoute>
+            <ApprovedOrder />
           </PrivateRoute>
         )
       },

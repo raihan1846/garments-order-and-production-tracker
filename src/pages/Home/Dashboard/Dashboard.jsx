@@ -57,6 +57,12 @@ const Dashboard = () => {
                         <Link to="/dashboard/track-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Track Order
                         </Link>
+                        <Link to="/dashboard/pending-order" className="block py-2 px-4 rounded hover:bg-gray-700">
+                            Pending Orders
+                        </Link>
+                        <Link to="/dashboard/approved-order" className="block py-2 px-4 rounded hover:bg-gray-700">
+                            Approved Orders
+                        </Link>
                     </>
                 );
             case "manager":
@@ -74,12 +80,12 @@ const Dashboard = () => {
                         <Link to="/dashboard/track-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Track Order
                         </Link>
-                        {/* <Link to="/dashboard/pending-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
+                        <Link to="/dashboard/pending-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Pending Orders
                         </Link>
-                        <Link to="/dashboard/approved-orders" className="block py-2 px-4 rounded hover:bg-gray-700">
+                        <Link to="/dashboard/approved-order" className="block py-2 px-4 rounded hover:bg-gray-700">
                             Approved Orders
-                        </Link> */}
+                        </Link>
                     </>
                 );
             case "buyer":
