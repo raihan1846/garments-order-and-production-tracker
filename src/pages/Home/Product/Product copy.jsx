@@ -2,39 +2,24 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
 
-const SingleSixProduct = () => {
+const Product = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
 
   useEffect(() => {
-    setLoading(true);
     axios.get('https://garments-order-production-tracker-s-zeta.vercel.app/products')
       .then(res => setProducts(res.data))
-      .catch(err => console.error(err))
-      .finally(() => setLoading(false));
+      .catch(err => console.error(err));
   }, []);
-
-  const displayedProducts = products.slice(0, 6);
-
-  if (loading) {
-    return (
-      <div className='flex justify-center items-center h-96'>
-        <div className='text-center'>
-          <div className='loader border-t-4 border-b-4 border-blue-500 rounded-full w-12 h-12 animate-spin mx-auto mb-4'></div>
-          <p className='text-lg font-semibold'>Loading products...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div>
       <div className='mt-20 text-center mb-10'>
         <h1 className='font-bold text-4xl mb-3'>Our Products</h1>
+        <p>Showing {products.length} products from our collection</p>
       </div>
       
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {displayedProducts.map(product => (
+        {products.map(product => (
           <div key={product._id} className="card bg-base-100 w-full shadow-md">
             <figure>
               <img 
@@ -51,7 +36,7 @@ const SingleSixProduct = () => {
               <p>{product.description}</p>
               <div className="card-actions justify-between items-center mt-4">
                 <div className="badge badge-outline">${product.price}</div>
-                <Link to={`/productDetails/${product._id}`} className="btn badge badge-outline p-3 bg-blue-600 text-white hover:bg-blue-700">
+                <Link to={`/productDetails/${product._id}`}  className="btn badge badge-outline p-3 bg-blue-600 text-white hover:bg-blue-700">
                   Show Details
                 </Link>
               </div>
@@ -63,4 +48,4 @@ const SingleSixProduct = () => {
   );
 };
 
-export default SingleSixProduct;
+export default Product;
