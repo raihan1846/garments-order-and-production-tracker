@@ -15,6 +15,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);      
     const [userRole, setUserRole] = useState(null); 
+    const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const registerUser = (email, password) => {
@@ -60,9 +61,40 @@ const AuthProvider = ({ children }) => {
         return () => unSubscribe();
     }, []);
 
+
+    ///////////////
+      useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            setUser(currentUser);
+
+            if (currentUser) {
+                try {
+                    // fetch full user data from DB (role + status)
+                    const res = await fetch(`http://localhost:3000/users/firebase/${currentUser.uid}`);
+                    const data = await res.json();
+                    setUserData({
+                        role: data.role,
+                        status: data.status,  // <-- important
+                        ...data
+                    });
+                } catch (err) {
+                    console.error("Error fetching user data from MongoDB:", err);
+                    setUserData(null);
+                }
+            } else {
+                setUserData(null);
+            }
+
+            setLoading(false);
+        });
+
+        return () => unSubscribe();
+    }, []);
+
     const authInfo = {
         user,
         userRole,
+        userData,
         loading,
         registerUser,
         signInUser,

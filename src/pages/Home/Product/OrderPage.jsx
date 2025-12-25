@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const OrderPage = () => {
   const { productId } = useParams();
-  const { user, userData } = useAuth(); // userData = role, status
+  const { user, userData } = useAuth(); 
   const navigate = useNavigate();
 
   const [product, setProduct] = useState(null);
@@ -19,8 +19,6 @@ const OrderPage = () => {
   useEffect(() => {
     axios.get(`http://localhost:3000/products/${productId}`).then(res => {
       setProduct(res.data);
-      console.log(res.data);
-      
       setQuantity(res.data.minimumOrder || 1);
     });
   }, [productId]);
@@ -37,6 +35,7 @@ const OrderPage = () => {
     userData?.role !== "buyer" ||
     userData?.status !== "active";
 
+    
   // 🔹 Submit Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +64,7 @@ const OrderPage = () => {
       notes,
       paymentMethod: product.paymentOption || "COD",
     };
+
 
     
     try {
@@ -155,13 +155,18 @@ const OrderPage = () => {
         />
 
         {/* Submit */}
-        <button
-          type="submit"
-          className={`w-full py-3 rounded-lg font-semibold transition
-           }`}
-        >
-          Place Order
-        </button>
+            <button
+            type="submit"
+            disabled={isDisabled}
+            className={`w-full py-3 rounded-lg font-semibold text-white transition-colors
+                ${isDisabled 
+                    ? "bg-gray-400 cursor-not-allowed" 
+                    : "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                }`}
+            >
+            Place Order
+            </button>
+
 
         {isDisabled && (
           <p className="text-red-500 text-sm text-center mt-2">
