@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router";
-import axios from 'axios';
 
 const Register = () => {
   const { registerUser } = useAuth();
@@ -16,39 +15,16 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  // const handleRegister = (data) => {
-  //   registerUser(data.email, data.password)
-  //     .then((result) => {
-  //       console.log(result.user);
-  //       navigate(location.state || "/");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
   const handleRegister = (data) => {
-  registerUser(data.email, data.password)
-    .then(async (result) => {
-      const user = result.user;
-
-      // Save user in MongoDB
-      await axios.post('http://localhost:3000/users', {
-        firebaseUid: user.uid,
-        name: data.name,
-        email: data.email,
-        photoURL: data.photoURL || '',
-        role: data.role || 'buyer',
-        status: 'pending'
+    registerUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        navigate(location.state || "/");
+      })
+      .catch((error) => {
+        console.log(error);
       });
-
-      navigate(location.state || '/');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
