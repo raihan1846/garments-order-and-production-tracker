@@ -27,6 +27,7 @@ import ApprovedOrder from "../pages/Home/Product/ApprovedOrder";
 import NotFound from "../pages/NotFound/NotFound";
 import About from "../pages/Home/Review/About";
 import Contact from "../pages/Home/Review/Contact";
+import SingleSixProduct from "../pages/Home/Product/SingleSixProduct";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/products',
-        element: <PrivateRoute><Product></Product></PrivateRoute>
+        element: <Product></Product>
+      },
+      {
+        path: '/singleSixProducts',
+        element: <SingleSixProduct></SingleSixProduct>
       },
       {
         path: '/productLists',

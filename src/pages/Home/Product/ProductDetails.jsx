@@ -84,7 +84,7 @@ const ProductDetails = () => {
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Options</h3>
                 <div className="flex flex-wrap gap-4">
                   {payments.map((p, idx) => (
-                    <div key={idx} className="flex items-center px-5 py-3 bg-gray-100 rounded-lg">
+                    <div key={idx} className="flex items-center px-5 py-3 bg-gray-900 rounded-lg">
                       <span className="font-medium">{p.trim()}</span>
                     </div>
                   ))}

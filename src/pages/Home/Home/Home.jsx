@@ -3,13 +3,14 @@ import Banner from '../Banner/Banner';
 import Product from '../Product/Product';
 import HIWork from '../HIWork/HIWork';
 import Review from '../Review/Review';
+import SingleSixProduct from '../Product/SingleSixProduct';
 
 const Home = () => {
     return (
         <div>
             
             <Banner></Banner>
-            <Product></Product>
+            <SingleSixProduct></SingleSixProduct>
             <HIWork></HIWork>
             <Review></Review>
         </div>
