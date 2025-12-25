@@ -122,6 +122,8 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SocialLogin = () => {
     const { signInGoogle } = useAuth();
@@ -163,9 +165,11 @@ const SocialLogin = () => {
             }
 
             // 3️⃣ Navigate to previous page or home
+                toast.success("Login successful!");
             navigate(location?.state?.from || '/');
 
         } catch (error) {
+          toast.error("Login failed! Please check your credentials.");
             console.error('Google sign-in error:', error);
         }
     };

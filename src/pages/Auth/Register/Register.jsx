@@ -4,6 +4,9 @@ import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router";
 import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = () => {
   const { registerUser } = useAuth();
@@ -41,11 +44,12 @@ const Register = () => {
         role: data.role || 'buyer',
         status: 'pending'
       });
-
+      toast.success("Registration successful!"); 
       navigate(location.state || '/');
     })
     .catch((error) => {
       console.log(error);
+      toast.error("Registration failed!");
     });
 };
 
