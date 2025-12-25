@@ -25,6 +25,8 @@ import TrackOrder from "../pages/Home/Product/TrackOrder";
 import PendingOrder from "../pages/Home/Product/PendingOrder";
 import ApprovedOrder from "../pages/Home/Product/ApprovedOrder";
 import NotFound from "../pages/NotFound/NotFound";
+import About from "../pages/Home/Review/About";
+import Contact from "../pages/Home/Review/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -120,6 +122,14 @@ export const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      },
+      {
+        path: '/about',
+        element: <About></About>
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
       },
       {
         path: '/updateProfile',

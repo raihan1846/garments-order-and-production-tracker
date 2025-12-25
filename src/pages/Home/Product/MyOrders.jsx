@@ -12,7 +12,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user?.uid) {
-      axios.get(`http://localhost:3000/orders/user/${user.uid}`)
+      axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/user/${user.uid}`)
         .then(res => {
           setOrders(res.data);
           setLoading(false);

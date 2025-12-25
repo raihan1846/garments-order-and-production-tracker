@@ -13,7 +13,7 @@ const PendingOrder = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/orders/pending`);
+        const res = await axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/pending`);
         console.log(res);
         
         setOrders(res.data);

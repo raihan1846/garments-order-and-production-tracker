@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
             if (currentUser) {
                 try {
-                    const res = await fetch(`http://localhost:3000/users/firebase/${currentUser.uid}`);
+                    const res = await fetch(`https://garments-order-production-tracker-s-zeta.vercel.app/users/firebase/${currentUser.uid}`);
                     const data = await res.json();
                     setUserRole(data.role); 
                 } catch (err) {
@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 try {
                     // fetch full user data from DB (role + status)
-                    const res = await fetch(`http://localhost:3000/users/firebase/${currentUser.uid}`);
+                    const res = await fetch(`https://garments-order-production-tracker-s-zeta.vercel.app/users/firebase/${currentUser.uid}`);
                     const data = await res.json();
                     setUserData({
                         role: data.role,

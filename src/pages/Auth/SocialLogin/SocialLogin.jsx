@@ -57,12 +57,12 @@
 //             const user = result.user;
 
 //             // Check if user already exists in MongoDB
-//             const checkRes = await fetch(`http://localhost:3000/users?email=${user.email}`);
+//             const checkRes = await fetch(`https://garments-order-production-tracker-s-zeta.vercel.app/users?email=${user.email}`);
 //             const existingUsers = await checkRes.json();
 
 //             if (existingUsers.length === 0) {
 //                 // If user does not exist, add to MongoDB
-//                 const addRes = await fetch('http://localhost:3000/users', {
+//                 const addRes = await fetch('https://garments-order-production-tracker-s-zeta.vercel.app/users', {
 //                     method: 'POST',
 //                     headers: {
 //                         'Content-Type': 'application/json'
@@ -136,12 +136,12 @@ const SocialLogin = () => {
             const user = result.user;
 
             // 1️⃣ Check if user exists in MongoDB
-            const checkRes = await fetch(`http://localhost:3000/users?email=${user.email}`);
+            const checkRes = await fetch(`https://garments-order-production-tracker-s-zeta.vercel.app/users?email=${user.email}`);
             const existingUsers = await checkRes.json();
 
             if (!existingUsers || existingUsers.length === 0) {
                 // 2️⃣ If user does not exist, add to MongoDB
-                const addRes = await fetch('http://localhost:3000/users', {
+                const addRes = await fetch('https://garments-order-production-tracker-s-zeta.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

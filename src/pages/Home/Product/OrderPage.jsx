@@ -17,7 +17,7 @@ const OrderPage = () => {
 
   // 🔹 Fetch product
   useEffect(() => {
-    axios.get(`http://localhost:3000/products/${productId}`).then(res => {
+    axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/products/${productId}`).then(res => {
       setProduct(res.data);
       setQuantity(res.data.minimumOrder || 1);
     });
@@ -74,7 +74,7 @@ const OrderPage = () => {
       } 
       // 💵 Cash on Delivery
       else {
-        await axios.post("http://localhost:3000/orders", orderData);
+        await axios.post("https://garments-order-production-tracker-s-zeta.vercel.app/orders", orderData);
         toast.success("Order placed successfully");
         navigate("/dashboard/my-orders");
       }

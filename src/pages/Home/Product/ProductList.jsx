@@ -6,7 +6,7 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/products')
+    axios.get('https://garments-order-production-tracker-s-zeta.vercel.app/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -14,7 +14,7 @@ const ProductList = () => {
   const handleDelete = (id) => {
     if (!window.confirm('Are you sure you want to delete this product?')) return;
 
-    axios.delete(`http://localhost:3000/products/${id}`)
+    axios.delete(`https://garments-order-production-tracker-s-zeta.vercel.app/products/${id}`)
       .then(() => setProducts(products.filter(p => p._id !== id)))
       .catch(err => console.error(err));
   };

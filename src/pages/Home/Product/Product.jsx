@@ -6,7 +6,7 @@ const Product = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/products')
+    axios.get('https://garments-order-production-tracker-s-zeta.vercel.app/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error(err));
   }, []);

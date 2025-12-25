@@ -17,7 +17,7 @@ const Profile = () => {
       }
 
       try {
-        const res = await axios.get(`http://localhost:3000/users?email=${currentUser.email}`);
+        const res = await axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/users?email=${currentUser.email}`);
         const userData = res.data[0]; 
 
         if (!userData) {

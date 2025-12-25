@@ -8,7 +8,7 @@ const ProductDetails = () => {
   const [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/products/${id}`)
+    axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/products/${id}`)
       .then(res => {
         setProduct(res.data);
         if (res.data.images && res.data.images.length > 0) {

@@ -22,7 +22,7 @@ const UpdateProfile = () => {
       }
 
       try {
-        const res = await axios.get(`http://localhost:3000/users?email=${currentUser.email}`);
+        const res = await axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/users?email=${currentUser.email}`);
         const userData = res.data[0];
         if (!userData) {
           navigate("/login");
@@ -63,7 +63,7 @@ const UpdateProfile = () => {
       }
 
       // MongoDB update
-      await axios.put(`http://localhost:3000/users/${userId}`, { name, email, photoURL });
+      await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/users/${userId}`, { name, email, photoURL });
 
       Swal.fire("Success", "Profile updated successfully", "success");
     } catch (err) {

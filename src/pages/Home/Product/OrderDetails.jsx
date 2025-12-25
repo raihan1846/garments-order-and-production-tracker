@@ -9,7 +9,7 @@ const OrderDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/products/orders/${id}`)
+    axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/products/orders/${id}`)
       .then(res => {
         setOrder(res.data);
         setLoading(false);

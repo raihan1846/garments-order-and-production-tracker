@@ -17,7 +17,7 @@ console.log(users);
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get("https://garments-order-production-tracker-s-zeta.vercel.app/users");
       setUsers(Array.isArray(res.data) ? res.data : []);
       setLoading(false);
     } catch (err) {
@@ -30,7 +30,7 @@ console.log(users);
   // Update user role
   const handleRoleChange = async (userId, newRole) => {
     try {
-      await axios.put(`http://localhost:3000/users/${userId}`, { role: newRole });
+      await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/users/${userId}`, { role: newRole });
       Swal.fire("Success", "User role updated", "success");
       fetchUsers();
     } catch (err) {
@@ -40,7 +40,7 @@ console.log(users);
   // Status update function
 const handleStatusChange = async (userId, newStatus) => {
   try {
-    await axios.put(`http://localhost:3000/users/${userId}`, { status: newStatus });
+    await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/users/${userId}`, { status: newStatus });
     Swal.fire("Success", "User status updated", "success");
     fetchUsers(); // Refresh user list
   } catch (err) {
@@ -61,7 +61,7 @@ const handleStatusChange = async (userId, newStatus) => {
 
     if (reason) {
       try {
-        await axios.put(`http://localhost:3000/users/${userId}`, {
+        await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/users/${userId}`, {
           status: "suspended",
           suspendFeedback: reason,
         });

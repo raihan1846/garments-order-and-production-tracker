@@ -19,7 +19,7 @@ const EditProduct = () => {
 
     // Fetch product data
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/${id}`)
+        axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/products/${id}`)
             .then(res => {
                 const product = res.data;
                 reset(product); // Pre-fill form
@@ -90,7 +90,7 @@ const EditProduct = () => {
                 showOnHome,
             };
 
-            await axios.put(`http://localhost:3000/products/${id}`, updatedProduct);
+            await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/products/${id}`, updatedProduct);
             toast.success('Product updated successfully!');
             setImages([]);
             setImagePreviews([]);

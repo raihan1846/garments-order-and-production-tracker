@@ -36,7 +36,7 @@ const Register = () => {
       const user = result.user;
 
       // Save user in MongoDB
-      await axios.post('http://localhost:3000/users', {
+      await axios.post('https://garments-order-production-tracker-s-zeta.vercel.app/users', {
         firebaseUid: user.uid,
         name: data.name,
         email: data.email,

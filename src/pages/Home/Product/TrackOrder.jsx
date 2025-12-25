@@ -12,7 +12,7 @@ const TrackOrder = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/orders/user/${user.uid}`);
+        const res = await fetch(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/user/${user.uid}`);
         const data = await res.json();
         setOrders(data);
       } catch (error) {

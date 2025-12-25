@@ -13,7 +13,7 @@ const ApprovedOrder = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/orders/approved`);
+        const res = await axios.get(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/approved`);
         console.log(res);
         
         setOrders(res.data);

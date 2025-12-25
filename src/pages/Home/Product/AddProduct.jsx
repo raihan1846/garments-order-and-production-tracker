@@ -75,7 +75,7 @@ const AddProduct = () => {
                 showOnHome,
             };
 
-            const res = await axios.post('http://localhost:3000/products', productData);
+            const res = await axios.post('https://garments-order-production-tracker-s-zeta.vercel.app/products', productData);
 
             if (res.data.insertedId) {
                 toast.success('Product added successfully!');

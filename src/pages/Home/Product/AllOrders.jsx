@@ -16,7 +16,7 @@ const AllOrders = () => {
     });
     // Fetch orders
     useEffect(() => {
-        axios.get("http://localhost:3000/orders")
+        axios.get("https://garments-order-production-tracker-s-zeta.vercel.app/orders")
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);
@@ -39,10 +39,10 @@ const AllOrders = () => {
     // Status update function
     const handleStatusChange = async (orderId, newStatus) => {
         try {
-            await axios.put(`http://localhost:3000/orders/${orderId}`, { status: newStatus });
+            await axios.put(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/${orderId}`, { status: newStatus });
             toast.success("Order status updated");
             // Refresh orders
-            const res = await axios.get("http://localhost:3000/orders");
+            const res = await axios.get("https://garments-order-production-tracker-s-zeta.vercel.app/orders");
             setOrders(res.data);
         } catch (err) {
             toast.error("Failed to update order status");
@@ -54,10 +54,10 @@ const handleDeleteOrder = async (orderId) => {
   if (!window.confirm("Are you sure you want to delete this order?")) return;
 
   try {
-    await axios.delete(`http://localhost:3000/orders/${orderId}`);
+    await axios.delete(`https://garments-order-production-tracker-s-zeta.vercel.app/orders/${orderId}`);
     toast.success("Order deleted successfully");
     // Refresh orders
-    const res = await axios.get("http://localhost:3000/orders");
+    const res = await axios.get("https://garments-order-production-tracker-s-zeta.vercel.app/orders");
     setOrders(res.data);
   } catch (err) {
     toast.error("Failed to delete order");
@@ -228,7 +228,7 @@ const handleDeleteOrder = async (orderId) => {
           onClick={async () => {
             try {
               await axios.patch(
-                `http://localhost:3000/orders/${selectedOrder._id}/tracking`,
+                `https://garments-order-production-tracker-s-zeta.vercel.app/orders/${selectedOrder._id}/tracking`,
                 trackingForm
               );
               toast.success("Tracking updated");
